@@ -1,3 +1,20 @@
+- [CKA Practice Environment](#cka-practice-environment)
+  * [the MOSTLY DIFFERENCE from the original repo](#the-mostly-difference-from-the-original-repo)
+  * [Quick Start do not need to clone the repo](#quick-start-needn-t-clone-the-repo)
+    + [Step 1 Frontend webpage](#step-1-frontend-webpage)
+    + [Step 2 Backend k8s](#step-2-backend-k8s)
+  * [Getting the environment up and ready](#getting-the-environment-up-and-ready)
+    + [1. install `docker-compose`](#1-install-docker-compose)
+    + [2. up it](#2-up-it)
+      - [To use the prebuilt images](#to-use-the-prebuilt-images)
+      - [To build the images yourself locally](#to-build-the-images-yourself-locally)
+    + [3. provision k8s (k3s)](#3-provision-k8s--k3s-)
+      - [**if you already have Kubernetes Cluster**](#if-you-already-have-kubernetes-cluster)
+      - [Rancher k3s](#rancher-k3s)
+  * [Uninstall](#uninstall)
+
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+
 # CKA Practice Environment
 
 ## the MOSTLY DIFFERENCE from the original repo

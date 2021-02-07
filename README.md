@@ -1,3 +1,20 @@
+- [CKA Practice Environment](#cka-practice-environment)
+  * [the MOSTLY DIFFERENCE from the original repo](#the-mostly-difference-from-the-original-repo)
+  * [Quick Start do not need to clone the repo](#quick-start-neednt-clone-the-repo)
+    + [Step 1 Frontend webpage](#step-1-frontend-webpage)
+    + [Step 2 Backend k8s](#step-2-backend-k8s)
+  * [Getting the environment up and ready](#getting-the-environment-up-and-ready)
+    + [1. install `docker-compose`](#1-install-docker-compose)
+    + [2. up it](#2-up-it)
+      - [To use the prebuilt images](#to-use-the-prebuilt-images)
+      - [To build the images yourself locally](#to-build-the-images-yourself-locally)
+    + [3. provision k8s (k3s)](#3-provision-k8s-k3s)
+      - [**if you already have Kubernetes Cluster**](#if-you-already-have-kubernetes-cluster)
+      - [Rancher k3s](#rancher-k3s)
+  * [Uninstall](#uninstall)
+
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+
 # CKA Practice Environment
 
 ## the MOSTLY DIFFERENCE from the original repo
@@ -17,10 +34,8 @@ export PUBLIC_IP=47.52.219.131
 export PRIVATE_IP=172.31.63.194
 
 # install docker-compose 
-wget https://docs.rancher.cn/download/compose/v1.24.1-docker-compose-Linux-x86_64
-mv v1.24.1-docker-compose-Linux-x86_64 docker-compose
-chmod +x docker-compose
-mv docker-compose /usr/local/bin/
+sudo curl -L "https://github.com/docker/compose/releases/download/1.28.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod 755 /usr/local/bin/docker-compose
 docker-compose -v
 
 # gen docker-compose.yaml and up it
@@ -79,8 +94,8 @@ kubectl get node
 
 # copy kubeconfig to /root/.kube/config
 cp /etc/rancher/k3s/k3s.yaml /root/.kube/config
-sed -i "s/localhost/$(echo $PRIVATE_IP)/g" /root/.kube/config
-
+sed -i "s/127.0.0.1/$(echo $PRIVATE_IP)/g" /root/.kube/config
+ 
 kubectl --kubeconfig /root/.kube/config get node
 ```
 

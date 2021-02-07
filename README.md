@@ -34,10 +34,8 @@ export PUBLIC_IP=47.52.219.131
 export PRIVATE_IP=172.31.63.194
 
 # install docker-compose 
-wget https://docs.rancher.cn/download/compose/v1.24.1-docker-compose-Linux-x86_64
-mv v1.24.1-docker-compose-Linux-x86_64 docker-compose
-chmod +x docker-compose
-mv docker-compose /usr/local/bin/
+sudo curl -L "https://github.com/docker/compose/releases/download/1.28.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod 755 /usr/local/bin/docker-compose
 docker-compose -v
 
 # gen docker-compose.yaml and up it
@@ -96,8 +94,8 @@ kubectl get node
 
 # copy kubeconfig to /root/.kube/config
 cp /etc/rancher/k3s/k3s.yaml /root/.kube/config
-sed -i "s/localhost/$(echo $PRIVATE_IP)/g" /root/.kube/config
-
+sed -i "s/127.0.0.1/$(echo $PRIVATE_IP)/g" /root/.kube/config
+ 
 kubectl --kubeconfig /root/.kube/config get node
 ```
 
